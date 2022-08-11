@@ -1,0 +1,30 @@
+function onEdit(e) {
+  
+
+var range = e.range;
+var col = range.getColumn();
+var row = range.getRow();
+var edited_value = e.value;
+var ss = e.range.getSheet();
+
+
+if(col == 6 && edited_value == "TRUE" && ss.getRange("A"+row).getValue() == "")
+{
+
+Browser.msgBox("Check If You Have Data In Column A ")
+
+}else
+{
+
+var to = ss.getRange("A"+row).getValue();
+var subject = ss.getRange("B"+row).getValue();
+var Email_body = ss.getRange("C"+row).getValue();
+
+
+MailApp.sendEmail(to,subject,Email_body)
+
+
+}
+
+
+}
